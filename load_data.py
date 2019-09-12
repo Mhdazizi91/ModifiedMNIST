@@ -15,9 +15,9 @@ import os
 #Files are stored in pickle format.
 #Load them like how you load any pickle. The data is a numpy array
 train_images = pd.read_pickle(
-    '/Users/saeedshoarayenejati/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/train_images.pkl')
+        '/Users/mhdazizi/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/train_images.pkl')
 train_labels = pd.read_csv(
-    '/Users/saeedshoarayenejati/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/train_labels.csv')
+    '/Users/mhdazizi/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/train_labels.csv')
 # train_images.shape
 # train_labels.shape
 # type(train_images)
@@ -31,9 +31,9 @@ new_img = train_images.reshape( train_images.shape[0],(train_images.shape[1]*tra
 print('Dimensions: %s x %s ' %(new_img.shape[0], new_img.shape[1]))
 print('Class distribution: %s' % np.bincount(train_labels))
 # save image and label as CSV (textfiles)
-np.savetxt(fname='/Users/saeedshoarayenejati/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/images.csv',
+np.savetxt(fname='/Users/mhdazizi/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/images.csv',
            X=new_img, delimiter=',', fmt='%d')
-np.savetxt(fname='/Users/saeedshoarayenejati/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/labels.csv',
+np.savetxt(fname='/Users/mhdazizi/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/labels.csv',
            X=train_labels, delimiter=',', fmt='%d')
 # #Let's show image with id 16
 # img_idx = 4

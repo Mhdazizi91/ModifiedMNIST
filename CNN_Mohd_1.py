@@ -20,7 +20,7 @@ torch.manual_seed(random_seed)
 
 # load data
 train_loader = torch.utils.data.DataLoader(
-    torchvision.datasets.MNIST('/Users/saeedshoarayenejati/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/data', 
+    torchvision.datasets.MNIST('/Users/mhdazizi/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/data', 
                                 train=True, 
                                 download=True,
                                 transform=torchvision.transforms.Compose([
@@ -31,7 +31,7 @@ train_loader = torch.utils.data.DataLoader(
     batch_size=batch_size_train, shuffle=False)
 
 test_loader = torch.utils.data.DataLoader(
-    torchvision.datasets.MNIST('/Users/saeedshoarayenejati/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/test',
+    torchvision.datasets.MNIST('/Users/mhdazizi/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/test',
                                 train=False,
                                 download=True,
                                 transform=torchvision.transforms.Compose([
@@ -108,8 +108,8 @@ def train(epoch):
       train_losses.append(loss.item())
       train_counter.append(
           (batch_idx*64) + ((epoch-1)*len(train_loader.dataset)))
-      torch.save(network.state_dict(),   '/Users/saeedshoarayenejati/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/mini_results/model.pth')
-      torch.save(optimizer.state_dict(), '/Users/saeedshoarayenejati/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/mini_results/optimizer.pth')
+      torch.save(network.state_dict(),   '/Users/mhdazizi/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/mini_results/model.pth')
+      torch.save(optimizer.state_dict(), '/Users/mhdazizi/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/mini_results/optimizer.pth')
 
 def test():
   network.eval()
@@ -155,16 +155,16 @@ continued_network = Net()
 continued_optimizer = optim.SGD(network.parameters(), lr=learning_rate,
                                 momentum=momentum)
 network_state_dict = torch.load(
-    '/Users/saeedshoarayenejati/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/mini_results/model.pth')
+    '/Users/mhdazizi/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/mini_results/model.pth')
 continued_network.load_state_dict(network_state_dict)
 
 optimizer_state_dict = torch.load(
-    '/Users/saeedshoarayenejati/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/mini_results/optimizer.pth')
+    '/Users/mhdazizi/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/mini_results/optimizer.pth')
 continued_optimizer.load_state_dict(optimizer_state_dict)
 
 for i in range(4, 9):
   test_counter.append(i*len(train_loader.dataset))
   train(i)
   test()
-  np.savetxt(fname='/Users/saeedshoarayenejati/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/final_results.csv',
+  np.savetxt(fname='/Users/mhdazizi/Downloads/COMP 551/mini project-3/comp-551-w2019-project-3-modified-mnist/final_results.csv',
                             X=test().numpy(), delimiter=',', fmt='%d')
